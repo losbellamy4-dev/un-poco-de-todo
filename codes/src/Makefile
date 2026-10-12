@@ -1,8 +1,8 @@
 CFLAGS = -O3 -march=native -fopenmp -Wall -Wextra
 LDLIBS = -lm
 all: libmindist.so qtsearch qtclimb qtx qtX
-libmindist.so: mindist.c
-	gcc $(CFLAGS) -shared -fPIC -o $@ $<
+libmindist.so: mindist.c qmd.c
+	gcc $(CFLAGS) -shared -fPIC -o $@ mindist.c qmd.c
 qtsearch: qtsearch.c mindist.c
 	gcc $(CFLAGS) -o $@ qtsearch.c mindist.c $(LDLIBS)
 qtclimb: qtclimb.c mindist.c

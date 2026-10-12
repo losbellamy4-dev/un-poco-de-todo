@@ -40,14 +40,28 @@ covering arrays (tablas de Colbourn tras login), códigos esféricos.
 - `pkill -f "patrón"` mata tu propio shell si el patrón aparece en el comando:
   usar `pkill -f "^python3 qt_driver"`.
 
+## Resultados de las búsquedas clásicas (sesión 1) — todo negativo
+- QT aleatorio/escalada en GF(3..9): iguala récords, nunca los supera.
+- Extensión 1/2 columnas y Construction X (r≤4, aux MDS) sobre códigos QT: 0 éxitos.
+- Construction X sobre los propios códigos récord de la tabla (GF(7), 287 reconstruidos,
+  `xtable.py`): 0 éxitos → Grassl ya aplica X sistemáticamente. Mercado eficiente.
+
+## Giro: códigos cuánticos (tabla QECC de qubits, `data/qbounds_q4.tsv`)
+- Cotas inferiores débiles en n≥35: mesetas largas por relleno ("ExtendCode" de un
+  código menor), p.ej. [[40,8,8]] = [[34,8,8]] + 6 qubits; [[41,1]]: lb 11 en 12 pasos.
+- Motor `src/qmd.c` (`qmd_distance`): distancia simpléctica de códigos aditivos GF(4),
+  n≤64, máscaras de 64 bits, B-Z sobre posiciones de qubit, exclusión de subcódigo
+  (distancia impura N(S)\S). Validado contra fuerza bruta (300 códigos), [[5,1,3]], Steane.
+- Familias: grafos circulantes/bicirculantes ([[n,0]], `qsearch.py`) y "aditivos
+  cíclicos" S={(c, c·s): c∈<g>} con s palindrómico, deg g = k (`qcyclic.py`, `qbatch.py`).
+  En n=52 los grafos circulantes aleatorios igualan el récord (d=14) en ~3 % de intentos.
+
 ## Resultados verificados
 (ninguno todavía)
 
 ## Siguientes pasos (prioridad)
-1. Ver resultados de `runs/qtx1` (dobles planos, j=2). Si 0: caza directa (j=0)
-   en GF(8)/GF(9)/GF(4) con m hasta 13 (los grupos de Aydin aún encuentran
-   récords QT en F4, F8, F9).
-2. Extensiones con j≥3 columnas (búsqueda greedy/recocido de V k×j).
-3. Familias más ricas: multi-twisted (λ distinto por bloque), 2-generadores.
-4. Parsear construcciones de codetables (QC + punct/short) para extender los
-   propios códigos récord de la tabla.
+1. Cuántico: resultados de `runs/qs_*` (grafos k=0) y `runs/qb1.log` (cíclicos k>0).
+   Añadir escalada (d, -A_d) y familias de grafos multi-circulantes.
+2. Verificador independiente para códigos cuánticos (segunda implementación).
+3. Clásico (baja prioridad): multi-twisted, 2-generadores; parser de construcciones
+   ampliado (QR codes, SubfieldSubcode, Construction B).
