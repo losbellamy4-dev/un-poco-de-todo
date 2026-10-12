@@ -11,3 +11,5 @@ qtx: qtx.c mindist.c
 	gcc $(CFLAGS) -o $@ qtx.c mindist.c $(LDLIBS)
 qtX: qtX.c mindist.c
 	gcc $(CFLAGS) -o $@ qtX.c mindist.c $(LDLIBS)
+arcsearch: arcsearch.c mindist.c
+	gcc $(CFLAGS) -o $@ arcsearch.c mindist.c $(LDLIBS)

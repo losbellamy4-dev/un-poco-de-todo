@@ -53,15 +53,21 @@ muestreo.
 - Familia sin ese tope: doble circulante unitario {(c, c·u): c∈<g>}, u = b/b̄* (`qdc.py`);
   su dual contiene el autodual {(y, y·u)} ⇒ tope = distancia de ese código autodual.
 - Motor cuántico 128 qubits: `qmd128.c` (`qdist128`, `quantum_distance_any`).
+- `bch_scan.py`: todos los códigos constacíclicos tipo BCH (todo n, λ, paso b) con
+  distancia *certificada* por la cota BCH: 15 773 pares (n,k) en q=3,4,5,7,8,9 → 0 superan
+  la tabla. Grassl ya domina las familias algebraicas clásicas.
+- `src/arcsearch.c` (tabú sobre conjuntos de puntos en PG(k−1,q)): ni siquiera alcanza
+  los códigos de Kohnert ([57,5,45]_8). Para k pequeño, Kohnert (grupos de automorfismos
+  prescritos + reducción de retículos) es muy superior a la búsqueda local.
 
 ## Resultados verificados
 (ninguno)
 
 ## Siguientes pasos (prioridad)
 1. Revisar `runs/qtX2*`, `runs/qb1.log`, `runs/qqc1*` (búsquedas que siguieron corriendo).
-2. **Cotas demostrables** para códigos QC/QT grandes (Semenov–Trifonov / spectral bounds,
-   BCH/HT/Roos para constacíclicos en GF(4), GF(8), GF(9)): buscar códigos cuya cota
-   *probada* supere entradas débiles de n grande (cadenas de perforación).
+2. Cotas demostrables más finas que BCH (Hartmann–Tzeng, Roos, espectrales para QC) en n
+   grande; o el método de Kohnert (automorfismos prescritos + LLL/ILP) implementado aquí
+   para grupos no probados (es el que produce los récords de k pequeño).
 3. Publicar/difundir `bench/` (artefacto o repo) para sistemas tipo AlphaEvolve.
 4. Dominios alternativos solo si hay acceso a SOTA actual (covering designs vía Zenodo
    snapshot es arriesgado: puede estar desactualizado).
