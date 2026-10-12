@@ -176,10 +176,10 @@ int qmd_distance(int n, int r, const uint64_t *X, const uint64_t *Z, int ns, con
     int rank = reduce_positions(rows, r, n, allpos, n, pivrow, posbits);
     r = rank;
     if (r == 0) return 0;
-    qset_t *sets = calloc(64, sizeof(qset_t));
+    qset_t *sets = calloc(16, sizeof(qset_t));
     int nsets = 0;
     char used[64] = {0};
-    while (nsets < 64) {
+    while (nsets < 16) {
         int pl[64], np = 0;
         for (int i = 0; i < n; i++) if (!used[i]) pl[np++] = i;
         if (!np) break;

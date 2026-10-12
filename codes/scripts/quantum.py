@@ -139,3 +139,38 @@ def circulant_graph(n, conn):
         m &= ~(1 << i)
         adj.append(m)
     return adj
+
+
+_lib.qmd128_distance.restype = ctypes.c_int
+_lib.qmd128_distance.argtypes = _lib.qmd_distance.argtypes
+
+M64 = (1 << 64) - 1
+
+
+def _split(vals):
+    a = np.zeros(2 * max(1, len(vals)), np.uint64)
+    for i, v in enumerate(vals):
+        a[2 * i] = v & M64
+        a[2 * i + 1] = v >> 64
+    return a
+
+
+def qdist128(gens, n, target=0, threads=0, exclude=None):
+    """As qdist, for n <= 128."""
+    ex = exclude or []
+    X, Z = _split([g[0] for g in gens]), _split([g[1] for g in gens])
+    SX, SZ = _split([g[0] for g in ex]), _split([g[1] for g in ex])
+    wit = np.zeros(4, np.uint64)
+    inf = np.zeros(4, np.int64)
+    return _lib.qmd128_distance(n, len(gens), X.ctypes.data, Z.ctypes.data, len(ex), SX.ctypes.data,
+                                SZ.ctypes.data, target, threads, wit.ctypes.data, inf.ctypes.data)
+
+
+def quantum_distance_any(stab, n, target=0, threads=0):
+    """Distance for n <= 128 (uses the 64-bit engine when possible)."""
+    if n <= 64:
+        return quantum_distance(stab, n, target, threads)
+    k = n - rank(stab, n)
+    if k == 0:
+        return qdist128(stab, n, target, threads)
+    return qdist128(normalizer(stab, n), n, target, threads, exclude=stab)

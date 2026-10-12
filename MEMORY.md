@@ -46,6 +46,14 @@ muestreo.
 - Los contadores "matched" en modo target son engañosos: en modo target la función
   devuelve la primera palabra < T, no el mínimo.
 
+- **Tope estructural** (aprendido tarde): si C ⊆ g·R^m con <g> hermítico autoortogonal,
+  C^⊥h ⊇ (<g>^⊥h)^m ⇒ d ≤ d(<g>^⊥h) (código cíclico corto). `qqc.py`/`qqc2.py` y `qcx.py`
+  sufren este tope. Análogo: familias "grafo + subcódigo" están topadas por la distancia
+  del grafo. Antes de lanzar una familia, buscar el subcódigo del dual que la limita.
+- Familia sin ese tope: doble circulante unitario {(c, c·u): c∈<g>}, u = b/b̄* (`qdc.py`);
+  su dual contiene el autodual {(y, y·u)} ⇒ tope = distancia de ese código autodual.
+- Motor cuántico 128 qubits: `qmd128.c` (`qdist128`, `quantum_distance_any`).
+
 ## Resultados verificados
 (ninguno)
 
