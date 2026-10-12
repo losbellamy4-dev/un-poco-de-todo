@@ -3,3 +3,4 @@
 __pycache__/
 runs/
 !runs/README.md
+bench/problems/classical.jsonl
