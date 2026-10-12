@@ -105,3 +105,74 @@ def brute_min_distance(q, G):
         if 0 < w < best:
             best = w
     return best if best <= n else 0
+
+
+_lib.md_minwords.restype = ctypes.c_int
+_lib.md_minwords.argtypes = [ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_void_p, ctypes.c_int,
+                             ctypes.c_int, ctypes.c_int, ctypes.c_void_p, ctypes.c_void_p, ctypes.c_void_p]
+_lib.md_extend.restype = ctypes.c_int
+_lib.md_extend.argtypes = [ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_void_p, ctypes.c_int,
+                           ctypes.c_void_p, ctypes.c_double, ctypes.c_longlong, ctypes.c_ulonglong,
+                           ctypes.c_void_p]
+
+
+def min_words(q, G, d, maxwords=100000, threads=0):
+    """All weight-d words (projective reps). Returns (words, systematic G, pivots) or (status, None, None)."""
+    G = np.ascontiguousarray(G, dtype=np.uint8)
+    k, n = G.shape
+    W = np.zeros((maxwords, n), np.uint8)
+    S = np.zeros((k, n), np.uint8)
+    piv = np.zeros(k, np.int32)
+    r = _lib.md_minwords(q, n, k, G.ctypes.data, d, maxwords, threads, W.ctypes.data, S.ctypes.data,
+                         piv.ctypes.data)
+    if r < 0:
+        return r, None, None
+    return W[:r].copy(), S, piv
+
+
+def extend_column(q, words, piv, k, exhaustive_limit=5e7, tries=10**7, seed=1):
+    """Column v with u.v != 0 for every listed word's message u (or None)."""
+    words = np.ascontiguousarray(words, dtype=np.uint8)
+    nw, n = words.shape
+    piv = np.ascontiguousarray(piv, dtype=np.int32)
+    v = np.zeros(k, np.uint8)
+    ok = _lib.md_extend(q, n, k, words.ctypes.data, nw, piv.ctypes.data, exhaustive_limit, tries, seed,
+                        v.ctypes.data)
+    return v if ok == 1 else None
+
+
+_lib.md_words_range.restype = ctypes.c_int
+_lib.md_words_range.argtypes = [ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_void_p, ctypes.c_int,
+                                ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_void_p, ctypes.c_void_p,
+                                ctypes.c_void_p, ctypes.c_void_p]
+_lib.md_extend2.restype = ctypes.c_int
+_lib.md_extend2.argtypes = [ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_void_p, ctypes.c_void_p,
+                            ctypes.c_int, ctypes.c_void_p, ctypes.c_int, ctypes.c_double, ctypes.c_longlong,
+                            ctypes.c_int, ctypes.c_ulonglong, ctypes.c_void_p, ctypes.c_void_p]
+
+
+def words_range(q, G, d, dhi, maxwords=200000, threads=0):
+    """Projective words with weight in [d, dhi] (d must be the minimum distance)."""
+    G = np.ascontiguousarray(G, dtype=np.uint8)
+    k, n = G.shape
+    W = np.zeros((maxwords, n), np.uint8)
+    wts = np.zeros(maxwords, np.int32)
+    S = np.zeros((k, n), np.uint8)
+    piv = np.zeros(k, np.int32)
+    r = _lib.md_words_range(q, n, k, G.ctypes.data, d, dhi, maxwords, threads, W.ctypes.data,
+                            wts.ctypes.data, S.ctypes.data, piv.ctypes.data)
+    if r < 0:
+        return r, None, None, None
+    return W[:r].copy(), wts[:r].copy(), S, piv
+
+
+def extend2(q, words, wts, piv, k, d, exhaustive_limit=2e7, tries=2 * 10**6, poolmax=4000, seed=1):
+    words = np.ascontiguousarray(words, dtype=np.uint8)
+    wts = np.ascontiguousarray(wts, dtype=np.int32)
+    nw, n = words.shape
+    piv = np.ascontiguousarray(piv, dtype=np.int32)
+    v1 = np.zeros(k, np.uint8)
+    v2 = np.zeros(k, np.uint8)
+    r = _lib.md_extend2(q, n, k, words.ctypes.data, wts.ctypes.data, nw, piv.ctypes.data, d,
+                        exhaustive_limit, tries, poolmax, seed, v1.ctypes.data, v2.ctypes.data)
+    return (v1, v2) if r == 1 else None
