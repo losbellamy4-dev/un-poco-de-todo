@@ -1,0 +1,39 @@
+q=2 n=1..32: 528 entries
+q=2 n=33..64: 2080 entries
+q=2 n=65..96: 4656 entries
+q=2 n=97..128: 8256 entries
+q=2 n=129..160: 12880 entries
+q=2 n=161..192: 18528 entries
+q=2 n=193..224: 25200 entries
+q=2 n=225..256: 32896 entries
+q=2: 32896 entries, 25859 open gaps -> /home/user/un-poco-de-todo/codes/data/bounds_q2.tsv
+q=3 n=1..32: 528 entries
+q=3 n=33..64: 2080 entries
+q=3 n=65..96: 4656 entries
+q=3 n=97..128: 8256 entries
+q=3 n=129..160: 12880 entries
+q=3 n=161..192: 18528 entries
+q=3 n=193..224: 25200 entries
+q=3 n=225..243: 29646 entries
+q=3: 29646 entries, 25684 open gaps -> /home/user/un-poco-de-todo/codes/data/bounds_q3.tsv
+q=4 n=1..32: 528 entries
+q=4 n=33..64: 2080 entries
+q=4 n=65..96: 4656 entries
+q=4 n=97..128: 8256 entries
+q=4 n=129..160: 12880 entries
+q=4 n=161..192: 18528 entries
+q=4 n=193..224: 25200 entries
+q=4 n=225..256: 32896 entries
+q=4: 32896 entries, 29374 open gaps -> /home/user/un-poco-de-todo/codes/data/bounds_q4.tsv
+q=8 n=1..32: 528 entries
+q=8 n=33..64: 2080 entries
+q=8 n=65..96: 4656 entries
+q=8 n=97..128: 8256 entries
+q=8 n=129..130: 8515 entries
+q=8: 8515 entries, 7202 open gaps -> /home/user/un-poco-de-todo/codes/data/bounds_q8.tsv
+q=9 n=1..32: 528 entries
+q=9 n=33..64: 2080 entries
+q=9 n=65..96: 4656 entries
+q=9 n=97..128: 8256 entries
+q=9 n=129..130: 8515 entries
+q=9: 8515 entries, 7265 open gaps -> /home/user/un-poco-de-todo/codes/data/bounds_q9.tsv
