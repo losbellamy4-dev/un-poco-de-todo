@@ -566,3 +566,131 @@ int md_extend2(int q, int n, int k, const uint8_t *words, const int *wts, int nw
     free(U0); free(U1); free(pool); free(ord0); free(R);
     return found ? 1 : (np == 0 ? -1 : 0);
 }
+
+/* Gaussian elimination pivoting in the given column order; returns rank. */
+static int reduce_order(const field_t *F, uint8_t *M, int k, int n, const int *order) {
+    int r = 0;
+    for (int oi = 0; oi < n && r < k; oi++) {
+        int col = order[oi];
+        int piv = -1;
+        for (int i = r; i < k; i++) if (M[i * n + col]) { piv = i; break; }
+        if (piv < 0) continue;
+        if (piv != r) for (int t = 0; t < n; t++) { uint8_t x = M[r * n + t]; M[r * n + t] = M[piv * n + t]; M[piv * n + t] = x; }
+        uint8_t iv = F->inv[M[r * n + col]];
+        for (int t = 0; t < n; t++) M[r * n + t] = F->mul[iv][M[r * n + t]];
+        for (int i = 0; i < k; i++) {
+            if (i == r || !M[i * n + col]) continue;
+            uint8_t f = F->neg[M[i * n + col]];
+            for (int t = 0; t < n; t++) M[i * n + t] = F->add[M[i * n + t]][F->mul[f][M[r * n + t]]];
+        }
+        r++;
+    }
+    return r;
+}
+
+/*
+ * md_isd: randomized search for a codeword of weight < target (information set
+ * decoding, Lee-Brickell style): `rounds` random information sets, all
+ * combinations of up to `w` rows in each.  G must have full rank k.
+ * Returns the smallest weight < target found, or n+1 if none was found
+ * (which is evidence, not proof, that d >= target).
+ */
+int md_isd(int q, int n, int k, const uint8_t *G, int target, int rounds, int w,
+           unsigned long long seed, int nthreads) {
+    field_t F;
+    if (field_init(&F, q)) return -1;
+#ifdef _OPENMP
+    if (nthreads > 0) omp_set_num_threads(nthreads);
+#endif
+    const int L = (n + 63) & ~63, q1 = q - 1;
+    uint8_t *M = malloc((size_t)k * n);
+    int *order = malloc(n * sizeof(int));
+    infoset_t I;
+    I.S = aligned_alloc(64, (size_t)k * q1 * L);
+    memset(I.S, 0, (size_t)k * q1 * L);
+    ctx_t C = { .F = &F, .n = n, .k = k, .L = L, .q1 = q1, .target = target, .stop = 0,
+                .best = n + 1, .count = 0 };
+    C.best_word = aligned_alloc(64, L);
+    uint64_t rs = seed * 0x9E3779B97F4A7C15ULL + 99991;
+    for (int t = 0; t < n; t++) order[t] = t;
+    for (int r = 0; r < rounds && !C.stop; r++) {
+        for (int t = n - 1; t > 0; t--) {
+            rs ^= rs << 13; rs ^= rs >> 7; rs ^= rs << 17;
+            int u = rs % (t + 1), x = order[t]; order[t] = order[u]; order[u] = x;
+        }
+        memcpy(M, G, (size_t)k * n);
+        if (reduce_order(&F, M, k, n, order) < k) continue;
+        I.rank = k;
+        for (int i = 0; i < k; i++)
+            for (int c = 1; c <= q1; c++) {
+                uint8_t *dst = I.S + (size_t)(i * q1 + c - 1) * L;
+                for (int t = 0; t < n; t++) dst[t] = F.enc[F.mul[c][M[i * n + t]]];
+            }
+        for (int s = 1; s <= w && s <= k && !C.stop; s++) enumerate(&C, &I, s);
+    }
+    int res = C.best < target ? C.best : n + 1;
+    free(M); free(order); free(I.S); free(C.best_word);
+    return res;
+}
+
+/*
+ * md_avoid: find V (k x r, column-major in V[t*k + i]) such that u V != 0 for
+ * every listed word (u_i = words[j][piv[i]]), i.e. no listed word lies in the
+ * codimension-r subcode {u : uV = 0}.  Strategy: random first r-1 columns, then
+ * the last column must satisfy u.v != 0 for the words still in the kernel;
+ * searched exhaustively (q^k <= exhaustive_limit) or by `inner` random tries.
+ * Returns 1 on success.
+ */
+int md_avoid(int q, int n, int k, const uint8_t *words, int nw, const int *piv, int r,
+             long long attempts, long long inner, double exhaustive_limit,
+             unsigned long long seed, uint8_t *V) {
+    field_t F;
+    if (field_init(&F, q) || k > 64 || r < 1 || r > 8) return -3;
+    uint8_t *U = malloc((size_t)(nw + 1) * k);
+    for (int j = 0; j < nw; j++)
+        for (int i = 0; i < k; i++) U[(size_t)j * k + i] = words[(size_t)j * n + piv[i]];
+    int *R = malloc((nw + 1) * sizeof(int));
+    uint64_t rs = seed * 0x9E3779B97F4A7C15ULL + 4242;
+    double total = 1; for (int i = 0; i < k; i++) total *= q;
+    int found = 0;
+    uint8_t x[64];
+    for (long long a = 0; a < attempts && !found; a++) {
+        /* random first r-1 columns */
+        for (int t = 0; t < r - 1; t++)
+            for (int i = 0; i < k; i++) { rs ^= rs << 13; rs ^= rs >> 7; rs ^= rs << 17; V[t * k + i] = rs % q; }
+        int nr = 0;
+        for (int j = 0; j < nw; j++) {
+            int zero = 1;
+            for (int t = 0; t < r - 1 && zero; t++) zero = !dot(&F, U + (size_t)j * k, V + t * k, k);
+            if (zero) R[nr++] = j;
+        }
+        /* last column */
+        int exhaustive = total <= exhaustive_limit;
+        long long it = 0;
+        if (exhaustive) memset(x, 0, k);
+        for (;;) {
+            if (exhaustive) {
+                int i = 0;
+                while (i < k) { if (++x[i] < q) break; x[i] = 0; i++; }
+                if (i == k) break;
+                int top = k - 1; while (top >= 0 && !x[top]) top--;
+                if (x[top] != 1) continue;
+            } else {
+                if (it++ >= inner) break;
+                for (int i = 0; i < k; i++) { rs ^= rs << 13; rs ^= rs >> 7; rs ^= rs << 17; x[i] = rs % q; }
+            }
+            int ok = 1;
+            for (int jj = 0; jj < nr; jj++) {
+                if (!dot(&F, U + (size_t)R[jj] * k, x, k)) {
+                    ok = 0;
+                    if (jj) { int t = R[jj]; memmove(R + 1, R, jj * sizeof(int)); R[0] = t; }
+                    break;
+                }
+            }
+            if (ok) { memcpy(V + (r - 1) * k, x, k); found = 1; break; }
+        }
+        if (r == 1) break;   /* nothing random to retry */
+    }
+    free(U); free(R);
+    return found;
+}

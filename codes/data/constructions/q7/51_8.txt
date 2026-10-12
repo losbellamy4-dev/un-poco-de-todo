@@ -1,0 +1,40 @@
+Bounds on the minimum distance of linear codes
+Bounds on the minimum distance of linear codes
+Bounds on linear codes [51,8] over GF(7) lower bound: 35 upper bound: 38 Construction Construction type: GraXX
+Construction of a linear code [51,8,35] over GF(7):
+[1]: [2, 2, 1] Cyclic Linear Code over GF(7)
+UniverseCode of length 2
+[2]: [1, 1, 1] Cyclic Linear Code over GF(7)
+RepetitionCode of length 1
+[3]: [48, 6, 34] Cyclic Linear Code over GF(7)
+CyclicCode of length 48 with generating polynomial x^42 + 3*x^40 + 4*x^39 + 3*x^38 + 3*x^36 + 2*x^34 + x^33 + 4*x^32 + 2*x^31 + 6*x^30 + 3*x^29 + 5*x^28 + 5*x^27 + 4*x^26 + 5*x^25 + 4*x^24 + 2*x^23 + x^22 + 2*x^21 + 5*x^20 + x^19 + 2*x^18 + 5*x^16 + x^14 + 3*x^13 + 5*x^11 + x^9 + 3*x^7 + 3*x^6 + 4*x^5 + 4*x^4 + 2*x^3 + x^2 + 5*x + 5
+[4]: [48, 7, 34] Cyclic Linear Code over GF(7)
+CyclicCode of length 48 with generating polynomial x^41 + 3*x^40 + 3*x^39 + 4*x^38 + 6*x^37 + 6*x^35 + 5*x^34 + 3*x^33 + 4*x^31 + 5*x^29 + 6*x^28 + 2*x^27 + 6*x^26 + 2*x^24 + 2*x^23 + 6*x^22 + 5*x^21 + 5*x^20 + 6*x^19 + 2*x^18 + 2*x^17 + 6*x^15 + 2*x^14 + 6*x^13 + 5*x^12 + 4*x^10 + 3*x^8 + 5*x^7 + 6*x^6 + 6*x^4 + 4*x^3 + 3*x^2 + 3*x + 1
+[5]: [48, 8, 33] Cyclic Linear Code over GF(7)
+CyclicCode of length 48 with generating polynomial x^40 + x^39 + x^38 + 2*x^37 + 2*x^36 + 3*x^35 + 5*x^33 + 4*x^30 + 6*x^29 + 6*x^27 + 4*x^26 + 5*x^25 + 4*x^24 + x^23 + 6*x^21 + 5*x^19 + 3*x^18 + 3*x^17 + 3*x^16 + x^15 + 4*x^14 + x^13 + 4*x^12 + 4*x^11 + 6*x^10 + 6*x^9 + 2*x^8 + 6*x^7 + 6*x^5 + 2*x^4 + 2*x^3 + 3*x + 4
+[6]: [51, 8, 35] Linear Code over GF(7)
+ConstructionXX using [5] [4] [3] [2] and [1]
+last modified: 2008-01-21
+From Brouwer's table (as of 2007-02-13)
+Notes
+All codes establishing the lower bounds were constructed using
+MAGMA .
+Upper bounds are taken from the tables of Andries E. Brouwer, with the exception of codes over GF(7) with n>50 .
+For most of these codes, the upper bounds are rather weak.
+Upper bounds for codes over GF(7) with small dimension have been provided by Rumen Daskalov .
+Special thanks to John Cannon for his support in this project.
+A prototype version of MAGMA's code database over GF(2) was
+written by Tat Chan in 1999 and extended later that year by
+Damien Fisher . The current release version was
+developed by Greg White over the period 2001-2006.
+Thanks also to Allan Steel for his MAGMA support.
+My apologies to all authors that have contributed codes to this table for not giving specific credits.
+If you have found any code improving the bounds or some errors, please send me an e-mail:
+codes [at] codetables.de
+Homepage |
+New Query |
+Contact
+This page is maintained by
+Markus Grassl
+( codes@codetables.de ).
+Last change: 30.12.2011

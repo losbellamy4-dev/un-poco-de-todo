@@ -1,0 +1,44 @@
+Bounds on the minimum distance of linear codes
+Bounds on the minimum distance of linear codes
+Bounds on linear codes [28,7] over GF(7) lower bound: 18 upper bound: 19 Construction Construction of a linear code [28,7,18] over GF(7):
+[1]: [29, 7, 19] Cyclic Linear Code over GF(7)
+CyclicCode of length 29 with generating polynomial x^22 + 6*x^21 + 3*x^20 + 6*x^19 + 3*x^18 + x^16 + 6*x^15 + 6*x^14 + 4*x^12 + 2*x^11 + 5*x^10 + 3*x^9 + x^8 + 3*x^7 + 5*x^5 + 4*x^4 + x^3 + x^2 + x + 1
+[2]: [28, 7, 18] Linear Code over GF(7)
+Puncturing of [1] at { 29 }
+last modified: 2001-12-17
+From Brouwer's table (as of 2007-02-13)
+Lb(28,7) = 18 is found by truncation of:
+Lb(29,7) = 19 Zi
+Ub(28,7) = 19 is found by considering shortening to:
+Ub(24,3) = 19 is found by considering truncation to:
+Ub(23,3) = 18 Hi4
+References
+Hi4:
+R. Hill, Optimal linear codes , pp. 75-104 in: Cryptography and Coding II
+(C. Mitchell, ed.), Oxford Univ. Press, 1992.
+Zi:
+Thomas Rehfinger, N. Suresh Babu & Karl-Heinz Zimmermann, New Good Codes via
+CQuest -- A System for the Silicon Search of Linear Codes , pp 294-306 in:
+Algebraic Combinatorics and Applications, A. Betten et al., eds, Springer, 2001.
+Notes
+All codes establishing the lower bounds were constructed using
+MAGMA .
+Upper bounds are taken from the tables of Andries E. Brouwer, with the exception of codes over GF(7) with n>50 .
+For most of these codes, the upper bounds are rather weak.
+Upper bounds for codes over GF(7) with small dimension have been provided by Rumen Daskalov .
+Special thanks to John Cannon for his support in this project.
+A prototype version of MAGMA's code database over GF(2) was
+written by Tat Chan in 1999 and extended later that year by
+Damien Fisher . The current release version was
+developed by Greg White over the period 2001-2006.
+Thanks also to Allan Steel for his MAGMA support.
+My apologies to all authors that have contributed codes to this table for not giving specific credits.
+If you have found any code improving the bounds or some errors, please send me an e-mail:
+codes [at] codetables.de
+Homepage |
+New Query |
+Contact
+This page is maintained by
+Markus Grassl
+( codes@codetables.de ).
+Last change: 30.12.2011

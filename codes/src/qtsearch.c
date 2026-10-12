@@ -25,6 +25,8 @@ int md_extend(int q, int n, int k, const uint8_t *words, int nw, const int *piv,
               double exhaustive_limit, long long tries, unsigned long long seed, uint8_t *v);
 int md_words_range(int q, int n, int k, const uint8_t *G, int d, int dhi, int maxwords, int nthreads,
                    uint8_t *words, int *wts, uint8_t *sys0, int *piv0);
+int md_isd(int q, int n, int k, const uint8_t *G, int target, int rounds, int w,
+           unsigned long long seed, int nthreads);
 int md_extend2(int q, int n, int k, const uint8_t *words, const int *wts, int nw, const int *piv, int d,
                double exhaustive_limit, long long tries, int poolmax, unsigned long long seed,
                uint8_t *v1, uint8_t *v2);
@@ -52,7 +54,10 @@ int main(int argc, char **argv) {
     uint8_t *f = malloc((size_t)m * k), *a = malloc(l);
     long long tried = 0, cnt[5] = {0};
     double t0 = now();
-    int hist = getenv("QT_HIST") != NULL;  /* histogram mode: classify d in lo-2..lo exactly */
+    int hist = getenv("QT_HIST") != NULL;
+    /* QT_ISD="rounds,w": use randomized information-set decoding instead of an exact proof */
+    int isd_rounds = 0, isd_w = 3;
+    if (getenv("QT_ISD")) sscanf(getenv("QT_ISD"), "%d,%d", &isd_rounds, &isd_w);  /* histogram mode: classify d in lo-2..lo exactly */
     /* extension mode: for codes with d == lo, try to append one column raising d to lo+1 */
     /* QT_EXT bit 1: one-column extension (record at n+1), bit 2: two-column extension (record at n+2) */
     int ext = getenv("QT_EXT") ? atoi(getenv("QT_EXT")) : 0;
@@ -101,6 +106,20 @@ int main(int argc, char **argv) {
         }
         tried++;
         int d;
+        if (isd_rounds) {
+            /* expensive targets: probabilistic rejection, survivors printed for offline proof */
+            d = md_isd(q, n, k, G, lo + 1, isd_rounds, isd_w, rnd(), 1);
+            if (d <= lo) { cnt[0]++; continue; }
+            cnt[4]++;
+            printf("PROBABLE d>=%d", lo + 1);
+            for (int j = 1; j < m; j++) {
+                printf(" f%d=", j + 1);
+                for (int i = 0; i < k; i++) printf("%s%d", i ? "," : "", f[j * k + i]);
+            }
+            printf("\n");
+            fflush(stdout);
+            continue;
+        }
         if (!hist) {
             d = md_compute(q, n, k, G, lo, 1, NULL, NULL);
             if (d < lo) { cnt[0]++; continue; }

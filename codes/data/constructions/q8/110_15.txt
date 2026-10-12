@@ -1,0 +1,48 @@
+Bounds on the minimum distance of linear codes
+Bounds on the minimum distance of linear codes
+Bounds on linear codes [110,15] over GF(8) lower bound: 70 upper bound: 84 Construction Construction of a linear code [110,15,70] over GF(8):
+[1]: [114, 15, 74] Quasicyclic of degree 2 Linear Code over GF(2^3)
+QuasiCyclicCode of length 114 with generating polynomials: x^56 + x^55 + w^2*x^54 + w^5*x^52 + w^4*x^51 + w^3*x^50 + w^4*x^49 + w^3*x^48 + w^3*x^46 + w^5*x^45 + w^6*x^44 + w^5*x^42 + w^5*x^41 + x^40 + w^6*x^39 + x^38 + w^5*x^35 + x^32 + w^6*x^31 + x^30 + w^5*x^29 + w^5*x^28 + w^6*x^26 + w^5*x^25 + w^3*x^24 + w^3*x^22 + w^4*x^21 + w^3*x^20 + w^4*x^19 + w^5*x^18 + w^2*x^16 + x^15 + x^14, w^5*x^55 + w^5*x^53 + w^6*x^52 + w^5*x^50 + x^48 + w^4*x^47 + w^4*x^46 + w^2*x^45 + w^2*x^44 + w^2*x^43 + w^5*x^42 + w^4*x^41 + w^5*x^40 + w*x^39 + w*x^38 + w^2*x^37 + w*x^36 + w^3*x^35 + w^5*x^34 + w^2*x^33 + w*x^32 + w^4*x^31 + x^29 + x^27 + w^5*x^26 + w^2*x^25 + x^23 + w^5*x^21 + w^5*x^20 + w^4*x^18 + w^6*x^17 + w^5*x^16 + w^2*x^15 + w^6*x^14 + w^4*x^13 + w*x^12 + w^6*x^11 + x^10 + w*x^9 + w*x^8 + w^4*x^7 + x^6 + w*x^5 + w^3*x^4 + w^6*x^3 + x^2 + w*x + w^5
+[2]: [110, 15, 70] Linear Code over GF(2^3)
+Puncturing of [1] at { 111 .. 114 }
+last modified: 2018-04-16
+From Brouwer's table (as of 2007-02-13)
+Lb(110,15) = 66 is found by shortening of:
+Lb(111,16) = 66 is found by truncation of:
+Lb(112,16) = 67 Var
+Ub(110,15) = 84 follows by a one-step Griesmer bound from:
+Ub(25,14) = 10 is found by considering shortening to:
+Ub(16,5) = 10 MPa
+References
+MPa:
+Stefano Marcugini, Alfredo Milani & Fernanda Pambianco, email 2000-2002.
+Idem, Existence and classification of NMDS codes over GF(5) and GF(7) ,
+Seventh International Workshop on Alg. and Combin. Coding Theory, Bansko,
+Bulgaria, 18-24 June 2000.
+Idem, NMDS Codes of Maximal Length Over F_q, 8 , IEEE Transactions
+on Informations Theory, 48, No.4, 2002.
+Var:
+From the Varshamov-Gilbert bound. Cf. R.R. Varshamov, Problems of the general
+theory of linear coding , Ph.D. thesis, Moscow State Univ., 1959. (Russian)
+Notes
+All codes establishing the lower bounds were constructed using
+MAGMA .
+Upper bounds are taken from the tables of Andries E. Brouwer, with the exception of codes over GF(7) with n>50 .
+For most of these codes, the upper bounds are rather weak.
+Upper bounds for codes over GF(7) with small dimension have been provided by Rumen Daskalov .
+Special thanks to John Cannon for his support in this project.
+A prototype version of MAGMA's code database over GF(2) was
+written by Tat Chan in 1999 and extended later that year by
+Damien Fisher . The current release version was
+developed by Greg White over the period 2001-2006.
+Thanks also to Allan Steel for his MAGMA support.
+My apologies to all authors that have contributed codes to this table for not giving specific credits.
+If you have found any code improving the bounds or some errors, please send me an e-mail:
+codes [at] codetables.de
+Homepage |
+New Query |
+Contact
+This page is maintained by
+Markus Grassl
+( codes@codetables.de ).
+Last change: 30.12.2011

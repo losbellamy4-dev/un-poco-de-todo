@@ -1,0 +1,43 @@
+Bounds on the minimum distance of linear codes
+Bounds on the minimum distance of linear codes
+Bounds on linear codes [42,6] over GF(7) lower bound: 30 upper bound: 32 Construction Construction of a linear code [42,6,30] over GF(7):
+[1]: [43, 7, 30] Cyclic Linear Code over GF(7)
+CyclicCode of length 43 with generating polynomial x^36 + 3*x^35 + 2*x^34 + 4*x^33 + x^32 + 5*x^31 + x^30 + x^29 + 6*x^28 + 2*x^27 + 4*x^25 + x^24 + 5*x^23 + 4*x^22 + 4*x^21 + 6*x^20 + x^19 + 4*x^18 + x^17 + 6*x^16 + 4*x^15 + 4*x^14 + 5*x^13 + x^12 + 4*x^11 + 2*x^9 + 6*x^8 + x^7 + x^6 + 5*x^5 + x^4 + 4*x^3 + 2*x^2 + 3*x + 1
+[2]: [42, 6, 30] Linear Code over GF(7)
+Shortening of [1] at { 43 }
+last modified: 2001-12-17
+From Brouwer's table (as of 2007-02-13)
+Lb(42,6) = 30 is found by shortening of:
+Lb(43,7) = 30 DaH
+Ub(42,6) = 32 follows by a one-step Griesmer bound from:
+Ub(9,5) = 4 is found by construction B:
+[consider deleting the (at most) 5 coordinates of a word in the dual]
+References
+DaH:
+Rumen Daskalov & Plamen Hristov, New One-Generator Quasi-Cyclic Codes over
+GF(7) , preprint, Oct 2001. R. Daskalov & P Hristov, New One-Generator
+Quasi-Twisted Codes over GF(5), (preprint) Oct. 2001. R. Daskalov & P Hristov,
+New Quasi-Twisted Degenerate Ternary Linear Codes , preprint, Nov 2001.
+Email, 2002-2003.
+Notes
+All codes establishing the lower bounds were constructed using
+MAGMA .
+Upper bounds are taken from the tables of Andries E. Brouwer, with the exception of codes over GF(7) with n>50 .
+For most of these codes, the upper bounds are rather weak.
+Upper bounds for codes over GF(7) with small dimension have been provided by Rumen Daskalov .
+Special thanks to John Cannon for his support in this project.
+A prototype version of MAGMA's code database over GF(2) was
+written by Tat Chan in 1999 and extended later that year by
+Damien Fisher . The current release version was
+developed by Greg White over the period 2001-2006.
+Thanks also to Allan Steel for his MAGMA support.
+My apologies to all authors that have contributed codes to this table for not giving specific credits.
+If you have found any code improving the bounds or some errors, please send me an e-mail:
+codes [at] codetables.de
+Homepage |
+New Query |
+Contact
+This page is maintained by
+Markus Grassl
+( codes@codetables.de ).
+Last change: 30.12.2011

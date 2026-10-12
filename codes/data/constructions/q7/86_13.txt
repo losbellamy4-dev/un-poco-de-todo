@@ -1,0 +1,30 @@
+Bounds on the minimum distance of linear codes
+Bounds on the minimum distance of linear codes
+Bounds on linear codes [86,13] over GF(7) lower bound: 54 upper bound: 62 Construction Construction type: AydinConnolly
+Construction of a linear code [86,13,54] over GF(7):
+[1]: [86, 13, 54] Quasicyclic of degree 2 Linear Code over GF(7)
+QuasiCyclicCode of length 86 with generating polynomials: 2*x^42 + x^41 + 4*x^40 + 2*x^39 + 4*x^37 + 6*x^36 + 2*x^34 + 6*x^33 + 6*x^32 + 3*x^29 + 6*x^28 + 6*x^27 + 3*x^26 + 6*x^23 + 6*x^22 + 2*x^21 + 6*x^19 + 4*x^18 + 2*x^16 + 4*x^15 + x^14 + 2*x^13 + x^6, 5*x^42 + 4*x^41 + 4*x^40 + x^39 + 5*x^38 + 4*x^37 + 6*x^36 + 2*x^35 + 4*x^34 + x^33 + x^32 + 2*x^31 + 2*x^30 + 6*x^29 + 3*x^28 + x^27 + x^26 + 5*x^25 + 5*x^23 + 3*x^22 + 5*x^21 + 5*x^20 + 5*x^19 + 3*x^18 + x^17 + 3*x^16 + 2*x^15 + x^14 + 5*x^13 + 4*x^12 + 4*x^11 + 4*x^10 + 4*x^9 + x^8 + 2*x^6 + 5*x^4 + x^3 + 4*x^2 + 5*x + 2
+last modified: 2014-08-25
+From Brouwer's table (as of 2007-02-13)
+Notes
+All codes establishing the lower bounds were constructed using
+MAGMA .
+Upper bounds are taken from the tables of Andries E. Brouwer, with the exception of codes over GF(7) with n>50 .
+For most of these codes, the upper bounds are rather weak.
+Upper bounds for codes over GF(7) with small dimension have been provided by Rumen Daskalov .
+Special thanks to John Cannon for his support in this project.
+A prototype version of MAGMA's code database over GF(2) was
+written by Tat Chan in 1999 and extended later that year by
+Damien Fisher . The current release version was
+developed by Greg White over the period 2001-2006.
+Thanks also to Allan Steel for his MAGMA support.
+My apologies to all authors that have contributed codes to this table for not giving specific credits.
+If you have found any code improving the bounds or some errors, please send me an e-mail:
+codes [at] codetables.de
+Homepage |
+New Query |
+Contact
+This page is maintained by
+Markus Grassl
+( codes@codetables.de ).
+Last change: 30.12.2011

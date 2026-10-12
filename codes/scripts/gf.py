@@ -176,3 +176,43 @@ def extend2(q, words, wts, piv, k, d, exhaustive_limit=2e7, tries=2 * 10**6, poo
     r = _lib.md_extend2(q, n, k, words.ctypes.data, wts.ctypes.data, nw, piv.ctypes.data, d,
                         exhaustive_limit, tries, poolmax, seed, v1.ctypes.data, v2.ctypes.data)
     return (v1, v2) if r == 1 else None
+
+
+_lib.md_isd.restype = ctypes.c_int
+_lib.md_isd.argtypes = [ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_void_p, ctypes.c_int, ctypes.c_int,
+                        ctypes.c_int, ctypes.c_ulonglong, ctypes.c_int]
+
+
+def isd(q, G, target, rounds=100, w=3, seed=1, threads=1):
+    """Randomized search for a word of weight < target; returns its weight or n+1."""
+    G = np.ascontiguousarray(G, dtype=np.uint8)
+    k, n = G.shape
+    return _lib.md_isd(q, n, k, G.ctypes.data, target, rounds, w, seed, threads)
+
+
+_lib.md_avoid.restype = ctypes.c_int
+_lib.md_avoid.argtypes = [ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_void_p, ctypes.c_int, ctypes.c_void_p,
+                          ctypes.c_int, ctypes.c_longlong, ctypes.c_longlong, ctypes.c_double, ctypes.c_ulonglong,
+                          ctypes.c_void_p]
+
+
+def avoid(q, words, piv, k, r, attempts=2000, inner=20000, exhaustive_limit=2e6, seed=1):
+    """V (k x r) with uV != 0 for all listed words (projective messages u = word[piv]), or None."""
+    words = np.ascontiguousarray(words, dtype=np.uint8)
+    nw, n = words.shape
+    piv = np.ascontiguousarray(piv, dtype=np.int32)
+    V = np.zeros(r * k, np.uint8)
+    ok = _lib.md_avoid(q, n, k, words.ctypes.data, nw, piv.ctypes.data, r, attempts, inner,
+                       exhaustive_limit, seed, V.ctypes.data)
+    return V.reshape(r, k).T.copy() if ok == 1 else None
+
+
+def matmul(q, A, B):
+    """Matrix product over GF(q) (canonical elements)."""
+    F = GF(q)
+    A = np.asarray(A, np.uint8)
+    B = np.asarray(B, np.uint8)
+    out = np.zeros((A.shape[0], B.shape[1]), np.uint8)
+    for i in range(A.shape[1]):
+        out = F.add[out, F.mul[A[:, i][:, None], B[i][None, :]]]
+    return out

@@ -1,0 +1,36 @@
+Bounds on the minimum distance of linear codes
+Bounds on the minimum distance of linear codes
+Bounds on linear codes [59,17] over GF(7) lower bound: 29 upper bound: 37 Construction Construction type: GraX
+Construction of a linear code [59,17,29] over GF(7):
+[1]: [2, 1, 2] Cyclic Linear Code over GF(7)
+RepetitionCode of length 2
+[2]: [57, 16, 29] Cyclic Linear Code over GF(7)
+CyclicCode of length 57 with generating polynomial x^41 + 4*x^40 + 5*x^39 + 3*x^38 + 5*x^37 + x^36 + 4*x^35 + 5*x^34 + x^33 + 3*x^32 + 3*x^30 + 2*x^29 + 4*x^28 + 5*x^27 + 2*x^26 + 5*x^25 + x^24 + x^23 + 3*x^22 + x^21 + 4*x^17 + 3*x^16 + 5*x^15 + 5*x^14 + 3*x^13 + 4*x^12 + 4*x^11 + x^10 + 4*x^9 + 4*x^8 + 2*x^6 + 5*x^4 + 5*x^3 + 5*x^2 + 3*x + 3
+[3]: [57, 17, 27] Cyclic Linear Code over GF(7)
+CyclicCode of length 57 with generating polynomial x^40 + x^39 + 2*x^38 + 4*x^37 + x^35 + x^34 + 2*x^33 + 2*x^32 + 4*x^31 + 2*x^30 + 4*x^29 + 4*x^28 + 6*x^27 + x^26 + 6*x^25 + x^24 + 5*x^23 + 3*x^21 + 6*x^20 + 3*x^19 + 5*x^18 + 6*x^17 + 3*x^15 + 3*x^14 + 3*x^13 + x^12 + x^11 + x^10 + 5*x^9 + 3*x^8 + 2*x^7 + x^6 + 6*x^5 + 3*x^4 + 3*x^3 + 3*x^2 + 3*x + 1
+[4]: [59, 17, 29] Linear Code over GF(7)
+ConstructionX using [3] [2] and [1]
+last modified: 2023-02-22
+From Brouwer's table (as of 2007-02-13)
+Notes
+All codes establishing the lower bounds were constructed using
+MAGMA .
+Upper bounds are taken from the tables of Andries E. Brouwer, with the exception of codes over GF(7) with n>50 .
+For most of these codes, the upper bounds are rather weak.
+Upper bounds for codes over GF(7) with small dimension have been provided by Rumen Daskalov .
+Special thanks to John Cannon for his support in this project.
+A prototype version of MAGMA's code database over GF(2) was
+written by Tat Chan in 1999 and extended later that year by
+Damien Fisher . The current release version was
+developed by Greg White over the period 2001-2006.
+Thanks also to Allan Steel for his MAGMA support.
+My apologies to all authors that have contributed codes to this table for not giving specific credits.
+If you have found any code improving the bounds or some errors, please send me an e-mail:
+codes [at] codetables.de
+Homepage |
+New Query |
+Contact
+This page is maintained by
+Markus Grassl
+( codes@codetables.de ).
+Last change: 30.12.2011

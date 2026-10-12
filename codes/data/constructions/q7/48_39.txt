@@ -1,0 +1,48 @@
+Bounds on the minimum distance of linear codes
+Bounds on the minimum distance of linear codes
+Bounds on linear codes [48,39] over GF(7) lower bound: 6 upper bound: 8 Construction Construction of a linear code [48,39,6] over GF(7):
+[1]: [50, 41, 6] "BCH code (d = 6, b = 23)" Linear Code over GF(7)
+BCHCode with parameters 50 6 23
+[2]: [48, 39, 6] Linear Code over GF(7)
+Shortening of [1] at { 49 .. 50 }
+last modified: 2001-12-17
+From Brouwer's table (as of 2007-02-13)
+Lb(48,39) = 6 is found by shortening of:
+Lb(50,41) = 6 BCH
+Ub(48,39) = 8 is found by considering shortening to:
+Ub(14,5) = 8 MPa
+References
+BCH:
+T. Kasami & N. Tokura, Some remarks on BCH bounds and minimum weights of
+binary primitive BCH codes , IEEE Trans. Inform. Theory IT-15 (May
+1969) 408-413.
+Or: a BCH code.
+MPa:
+Stefano Marcugini, Alfredo Milani & Fernanda Pambianco, email 2000-2002.
+Idem, Existence and classification of NMDS codes over GF(5) and GF(7) ,
+Seventh International Workshop on Alg. and Combin. Coding Theory, Bansko,
+Bulgaria, 18-24 June 2000.
+Idem, NMDS Codes of Maximal Length Over F_q, 8 , IEEE Transactions
+on Informations Theory, 48, No.4, 2002.
+Notes
+All codes establishing the lower bounds were constructed using
+MAGMA .
+Upper bounds are taken from the tables of Andries E. Brouwer, with the exception of codes over GF(7) with n>50 .
+For most of these codes, the upper bounds are rather weak.
+Upper bounds for codes over GF(7) with small dimension have been provided by Rumen Daskalov .
+Special thanks to John Cannon for his support in this project.
+A prototype version of MAGMA's code database over GF(2) was
+written by Tat Chan in 1999 and extended later that year by
+Damien Fisher . The current release version was
+developed by Greg White over the period 2001-2006.
+Thanks also to Allan Steel for his MAGMA support.
+My apologies to all authors that have contributed codes to this table for not giving specific credits.
+If you have found any code improving the bounds or some errors, please send me an e-mail:
+codes [at] codetables.de
+Homepage |
+New Query |
+Contact
+This page is maintained by
+Markus Grassl
+( codes@codetables.de ).
+Last change: 30.12.2011

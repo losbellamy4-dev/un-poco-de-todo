@@ -155,6 +155,8 @@ class PolyRing:
                 return self.edf(g, d, rng) + self.edf(self.monic(h), d, rng)
 
     def factor_squarefree(self, f, seed=0):
+        if len(self.gcd(f, self.deriv(f))) > 1:
+            raise ValueError("polynomial is not squarefree")
         rng = random.Random(seed)
         out = []
         for g, d in self.ddf(f):

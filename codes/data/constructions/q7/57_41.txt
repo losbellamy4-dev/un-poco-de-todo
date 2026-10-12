@@ -1,0 +1,31 @@
+Bounds on the minimum distance of linear codes
+Bounds on the minimum distance of linear codes
+Bounds on linear codes [57,41] over GF(7) lower bound: 10 upper bound: 14 Construction Construction of a linear code [57,41,10] over GF(7):
+[1]: [58, 42, 10] Cyclic Linear Code over GF(7)
+CyclicCode of length 58 with generating polynomial x^16 + 6*x^14 + 3*x^13 + 6*x^12 + 6*x^10 + 2*x^9 + 2*x^8 + 2*x^7 + 4*x^6 + 5*x^5 + 2*x^4 + x^3 + x + 1
+[2]: [57, 41, 10] Linear Code over GF(7)
+Shortening of [1] at { 58 }
+last modified: 2005-04-12
+From Brouwer's table (as of 2007-02-13)
+Notes
+All codes establishing the lower bounds were constructed using
+MAGMA .
+Upper bounds are taken from the tables of Andries E. Brouwer, with the exception of codes over GF(7) with n>50 .
+For most of these codes, the upper bounds are rather weak.
+Upper bounds for codes over GF(7) with small dimension have been provided by Rumen Daskalov .
+Special thanks to John Cannon for his support in this project.
+A prototype version of MAGMA's code database over GF(2) was
+written by Tat Chan in 1999 and extended later that year by
+Damien Fisher . The current release version was
+developed by Greg White over the period 2001-2006.
+Thanks also to Allan Steel for his MAGMA support.
+My apologies to all authors that have contributed codes to this table for not giving specific credits.
+If you have found any code improving the bounds or some errors, please send me an e-mail:
+codes [at] codetables.de
+Homepage |
+New Query |
+Contact
+This page is maintained by
+Markus Grassl
+( codes@codetables.de ).
+Last change: 30.12.2011
