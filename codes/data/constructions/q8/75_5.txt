@@ -1,0 +1,44 @@
+Bounds on the minimum distance of linear codes
+Bounds on the minimum distance of linear codes
+Bounds on linear codes [75,5] over GF(8) lower bound: 60 upper bound: 63 Construction Construction type: Koh
+Construction of a linear code [75,5,60] over GF(8):
+[1]: [75, 5, 60] Linear Code over GF(2^3)
+code found by Axel Kohnert
+Construction from a stored generator matrix:
+[ 1, 0, 0, 0, 0, w, 0, 0, w, w, 1, w, 1, 1, 0, w^6, 1, w^3, w^4, w, 1, w^4, 1, 0, 0, w^4, w, w^5, w^2, w^5, w^5, w^5, 1, 0, 0, 0, w^3, w^4, w^3, w^3, w^4, w^3, 0, w^4, w, 1, 0, 0, w^4, w^6, w, w^2, w^5, w^3, w, w^2, w^4, 1, w, 1, w, w, w^3, 1, w, 1, w, w, w^3, w^2, w, w^2, w^2, w^3, w^4 ]
+[ 0, 1, 0, 0, w, 0, 0, w, 0, w, 1, w, 1, 0, 1, 1, w^6, 0, w^3, 0, w, w^4, 1, w^4, 1, 1, 0, w, 0, w^2, w^5, w^5, w^4, w^5, w^5, w, 0, 1, w, w^2, 0, w^4, w^6, w^3, w^3, w, w^4, 1, w, w, w^4, 0, w^3, 0, w^5, 1, w, w, 1, w, w^2, w^3, w^4, w^2, w^4, w^2, 1, w^2, w, 1, w, w, w, w^3, w^3 ]
+[ 0, 0, 1, 0, w, w, 0, 0, 0, w, 1, 0, 0, 1, 1, w^5, w^3, w, w^2, w^5, w^4, w^5, w^2, w, w^5, w^2, 1, w^4, w^4, 1, w^6, w^2, w^3, 1, w^4, w^3, w^3, w^2, w^3, 0, w, 0, w^3, w^2, 1, w^6, w^3, 1, w^6, w, w^3, w^4, w^2, w^2, 1, 1, w, w^5, w^5, 0, w^6, 0, w^2, 1, w, w^4, w^5, w^6, w^5, 0, w, 1, 0, w^3, w ]
+[ 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, w, w, w^3, w^3, w, w^3, w, w^3, 1, w^3, w^3, w^6, w^6, w^6, w^3, 1, w^3, w^6, w^3, w^4, w, w^5, 0, w^2, 1, w^6, 0, w^6, w^2, 0, w^2, 1, w^6, w^2, 0, 1, w^6, 1, w, w^3, w^2, w^2, w, w, w^3, w^3, w^2, w^6, w, w^2, w, w^6, w, w^2, w^2, w, w^6, w^6 ]
+[ 0, 0, 0, 0, 0, 0, 1, w, w, w, 0, 0, 1, 1, 1, w^3, w^5, w, w, w^5, w^5, w^2, w^4, w^5, w^2, w^3, 1, 1, w^4, w^4, 1, w^4, w^2, w^2, w^6, w, w^4, 1, w^6, w^4, 1, w^6, w, 0, w^2, w^3, w^2, w^6, 1, 1, w, w^3, 0, w^3, w^2, w^4, w^6, 0, 0, 1, 1, w, w, 1, w, 0, 1, 0, w, w^4, w^5, w, w^6, w^5, w^3 ] where w:=Root(x^3 + x + 1)[1,1];
+last modified: 2007-07-31
+From Brouwer's table (as of 2007-02-13)
+Lb(75,5) = 60 Koh
+Ub(75,5) = 63 follows by a one-step Griesmer bound from:
+Ub(11,4) = 7 is found by considering truncation to:
+Ub(10,4) = 6 is found by construction B:
+[consider deleting the (at most) 4 coordinates of a word in the dual]
+References
+Koh:
+Axel Kohnert, email, 2006.
+Notes
+All codes establishing the lower bounds were constructed using
+MAGMA .
+Upper bounds are taken from the tables of Andries E. Brouwer, with the exception of codes over GF(7) with n>50 .
+For most of these codes, the upper bounds are rather weak.
+Upper bounds for codes over GF(7) with small dimension have been provided by Rumen Daskalov .
+Special thanks to John Cannon for his support in this project.
+A prototype version of MAGMA's code database over GF(2) was
+written by Tat Chan in 1999 and extended later that year by
+Damien Fisher . The current release version was
+developed by Greg White over the period 2001-2006.
+Thanks also to Allan Steel for his MAGMA support.
+My apologies to all authors that have contributed codes to this table for not giving specific credits.
+If you have found any code improving the bounds or some errors, please send me an e-mail:
+codes [at] codetables.de
+Homepage |
+New Query |
+Contact
+This page is maintained by
+Markus Grassl
+( codes@codetables.de ).
+Last change: 30.12.2011

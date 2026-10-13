@@ -1,0 +1,48 @@
+Bounds on the minimum distance of linear codes
+Bounds on the minimum distance of linear codes
+Bounds on linear codes [57,5] over GF(8) lower bound: 45 upper bound: 47 Construction Construction of a linear code [57,5,45] over GF(8):
+[1]: [60, 5, 48] Linear Code over GF(2^3)
+code found by Axel Kohnert
+Construction from a stored generator matrix:
+[ 1, 0, 0, 0, 0, w^4, 1, w^4, w^4, w^4, w^5, 1, w^5, 1, 0, 0, w^5, 0, w^5, 0, w^5, 0, 1, w^4, w^5, w^6, 1, w^4, 0, 1, w^5, w^4, w^6, w^5, 0, w^6, w^4, 1, 0, w^6, w, w^4, w^2, w^5, 1, w^2, w^5, w^6, w^6, 1, w^2, w^6, 1, 1, w^5, w^2, w^5, w^5, w^2, w^6 ]
+[ 0, 1, 0, 0, 0, w^3, w^4, w^2, w^2, w^2, 0, w^2, 0, 0, w^4, w^4, w^6, 1, w^3, 0, 0, w^3, w^2, 0, w^5, w, w, 1, w^6, 0, w^2, w^3, 1, w^6, w^4, 0, w^6, w^4, 1, w^5, w^5, w^4, w^3, 1, w^6, w^3, 1, w^2, w^6, w^2, w^6, w, w^3, w, w^4, w^2, w^2, w^6, w^5, w^5 ]
+[ 0, 0, 1, 0, 0, w^2, w^4, w^3, w^2, w^2, 0, 0, w^6, w^2, w^4, 1, w^3, 0, 0, w^4, w^5, w^6, w^4, 1, w^2, 1, w^2, w^3, 1, w, w^6, w^6, w^5, 0, w^3, w, 0, 0, w^4, 0, w^2, w, w^4, w^5, w^3, w^2, w^2, w^5, w^2, w, w^3, w^6, w^2, w^6, w^6, w^5, w^4, 1, w^6, w ]
+[ 0, 0, 0, 1, 0, w^2, w^4, w^2, w^3, w^2, w^6, w^2, w^3, 0, 1, 0, 0, w^4, 0, w^4, w^2, 1, 0, w^3, w^6, w^5, w^4, w^6, w^4, w^2, 0, 0, 0, w^5, w^6, 1, 1, w, w^3, w, w^3, w^5, w^2, w^2, w^2, w^5, w^4, w, w^5, w^6, w^2, w^2, w, w^3, 1, w^6, w^6, w^2, w^3, w^6 ]
+[ 0, 0, 0, 0, 1, w^2, w^4, w^2, w^2, w^3, w^3, 0, 0, w^2, 0, w^4, 0, w^4, w^6, 1, w^6, w^4, w, w^6, 0, 0, 0, 0, w^3, w^4, w^5, 1, w, w^2, 1, w^5, w^3, w^2, w^6, 1, w, w^6, w^6, w^6, w, w^6, w^6, w^6, w, w^3, w^5, w^5, w^6, w^2, w^2, w^3, 1, w^4, w^2, w^2 ] where w:=Root(x^3 + x + 1)[1,1];
+[2]: [57, 5, 45] Linear Code over GF(2^3)
+Puncturing of [1] at { 58 .. 60 }
+last modified: 2006-06-27
+From Brouwer's table (as of 2007-02-13)
+Lb(57,5) = 45 is found by truncation of:
+Lb(60,5) = 48 Koh
+Ub(57,5) = 47 is found by considering shortening to:
+Ub(55,3) = 47 is found by considering truncation to:
+Ub(50,3) = 42 Hi4
+References
+Hi4:
+R. Hill, Optimal linear codes , pp. 75-104 in: Cryptography and Coding II
+(C. Mitchell, ed.), Oxford Univ. Press, 1992.
+Koh:
+Axel Kohnert, email, 2006.
+Notes
+All codes establishing the lower bounds were constructed using
+MAGMA .
+Upper bounds are taken from the tables of Andries E. Brouwer, with the exception of codes over GF(7) with n>50 .
+For most of these codes, the upper bounds are rather weak.
+Upper bounds for codes over GF(7) with small dimension have been provided by Rumen Daskalov .
+Special thanks to John Cannon for his support in this project.
+A prototype version of MAGMA's code database over GF(2) was
+written by Tat Chan in 1999 and extended later that year by
+Damien Fisher . The current release version was
+developed by Greg White over the period 2001-2006.
+Thanks also to Allan Steel for his MAGMA support.
+My apologies to all authors that have contributed codes to this table for not giving specific credits.
+If you have found any code improving the bounds or some errors, please send me an e-mail:
+codes [at] codetables.de
+Homepage |
+New Query |
+Contact
+This page is maintained by
+Markus Grassl
+( codes@codetables.de ).
+Last change: 30.12.2011

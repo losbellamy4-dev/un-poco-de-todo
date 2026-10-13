@@ -1,0 +1,31 @@
+Bounds on the minimum distance of linear codes
+Bounds on the minimum distance of linear codes
+Bounds on linear codes [89,10] over GF(7) lower bound: 60 upper bound: 68 Construction Construction of a linear code [89,10,60] over GF(7):
+[1]: [90, 10, 61] Linear Code over GF(7)
+QuasiTwistedCyclicCode of length 90 and constant 6 with generators: 2*x^29 + 3*x^28 + 6*x^27 + 5*x^26 + 6*x^23 + 3*x^22 + 3*x^21 + 5*x^20 + 6*x^19 + 6*x^18 + 6*x^17 + 3*x^16 + 3*x^15 + 6*x^12 + 5*x^11 + 3*x^10 + x^9, 2*x^29 + 6*x^27 + 2*x^26 + 3*x^25 + 2*x^24 + x^23 + 2*x^22 + 2*x^21 + x^20 + 5*x^19 + 2*x^18 + 4*x^17 + 3*x^16 + 3*x^15 + 6*x^12 + 2*x^11 + 3*x^10 + 5*x^9 + 5*x^4 + x^2 + x, 6*x^29 + 4*x^28 + 4*x^26 + 5*x^25 + x^24 + 5*x^23 + 4*x^22 + x^21 + 3*x^20 + 3*x^19 + 4*x^18 + 4*x^17 + 3*x^16 + x^15 + 6*x^13 + 6*x^12 + 3*x^11 + 5*x^9 + 5*x^4 + 4*x^3 + 2*x^2 + 3*x + 6
+[2]: [89, 10, 60] Linear Code over GF(7)
+Puncturing of [1] at { 90 }
+last modified: 2008-10-10
+From Brouwer's table (as of 2007-02-13)
+Notes
+All codes establishing the lower bounds were constructed using
+MAGMA .
+Upper bounds are taken from the tables of Andries E. Brouwer, with the exception of codes over GF(7) with n>50 .
+For most of these codes, the upper bounds are rather weak.
+Upper bounds for codes over GF(7) with small dimension have been provided by Rumen Daskalov .
+Special thanks to John Cannon for his support in this project.
+A prototype version of MAGMA's code database over GF(2) was
+written by Tat Chan in 1999 and extended later that year by
+Damien Fisher . The current release version was
+developed by Greg White over the period 2001-2006.
+Thanks also to Allan Steel for his MAGMA support.
+My apologies to all authors that have contributed codes to this table for not giving specific credits.
+If you have found any code improving the bounds or some errors, please send me an e-mail:
+codes [at] codetables.de
+Homepage |
+New Query |
+Contact
+This page is maintained by
+Markus Grassl
+( codes@codetables.de ).
+Last change: 30.12.2011
