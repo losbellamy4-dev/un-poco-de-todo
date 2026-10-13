@@ -1,0 +1,65 @@
+
+ 
+ 
+ Bounds on the minimum distance of quantum codes 
+ 
+ 
+ 
+ 
+
+ Bounds on [[33,19]] 2 lower bound: 4 upper bound: 5 Construction Construction of a [[33,19,4]] quantum code:
+[1]: [[40, 30, 4]] quantum code over GF(2^2)
+ QuasiCyclicCode of length 40 stacked to height 2 with generating polynomials: 1, w^2*x^4 + w*x^3 + w^2*x^2 + w*x + w^2, x^4 + w^2*x^2 + w^2*x + w^2, x^4 + w*x^3 + x^2, w*x^4 + x^3 + w^2*x, w*x^4 + x^3 + x^2 + x, w^2*x^4 + x^2 + w*x, x^4 + w^2*x^3 + w^2*x^2 + x + 1, w, x^4 + w^2*x^3 + x^2 + w^2*x + 1, w*x^4 + x^2 + x + 1, w*x^4 + w^2*x^3 + w*x^2, w^2*x^4 + w*x^3 + x, w^2*x^4 + w*x^3 + w*x^2 + w*x, x^4 + w*x^2 + w^2*x, w*x^4 + x^3 + x^2 + w*x + w
+[2]: [[30, 20, 4]] quantum code over GF(2^2)
+ Shortening of [1] at { 2, 3, 4, 5, 11, 13, 27, 29, 37, 40 }
+[3]: [[30, 19, 4]] quantum code over GF(2^2)
+ Subcode of [2]
+[4]: [[32, 19, 4]] quantum code over GF(2^2)
+ ExtendCode [3] by 2
+[5]: [[33, 19, 4]] quantum code over GF(2^2)
+ ExtendCode [4] by 1
+
+ stabilizer matrix:
+
+ [1 0 0 0 0 0 1 1 0 1 1 0 0 1 1 1 0 1 1 0 0 1 1 1 0 1 1 1 1 0 0 0 0|0 0 0 0 0 1 0 1 1 0 1 0 0 1 0 0 1 0 1 0 1 0 1 0 1 0 0 1 1 0 0 0 0]
+ [0 0 0 0 0 0 0 1 1 0 1 0 0 1 0 0 1 0 1 0 1 0 1 0 1 0 0 1 0 1 0 0 0|1 0 0 0 0 1 1 0 1 1 0 0 0 0 1 1 1 1 0 0 1 1 0 1 1 0 1 1 0 0 0 0 0]
+ [0 1 0 0 0 0 0 0 1 1 1 0 0 0 1 0 0 0 1 1 0 1 1 1 0 0 0 0 1 1 0 0 0|0 0 0 0 0 0 0 1 1 0 0 1 0 1 0 0 1 1 0 1 0 0 0 0 1 0 0 1 1 1 0 0 0]
+ [0 0 0 0 0 0 0 1 1 0 0 1 0 1 0 0 1 1 0 1 0 0 0 0 1 1 0 0 1 1 0 0 0|0 1 0 0 0 1 0 1 0 1 1 1 0 1 1 0 1 1 1 0 0 1 1 1 1 1 0 0 1 1 0 0 0]
+ [0 0 1 0 0 0 1 0 1 0 1 1 0 1 1 0 0 1 0 0 1 1 0 1 1 1 1 1 0 1 0 0 0|0 0 0 0 0 1 1 1 1 1 1 1 1 0 0 0 0 0 0 1 1 1 1 0 0 1 1 1 1 0 0 0 0]
+ [0 0 0 0 0 0 1 1 1 1 1 1 1 0 0 0 0 0 0 1 1 1 1 0 0 0 1 0 0 1 0 0 0|0 0 1 0 0 0 0 1 0 1 0 0 1 1 1 0 0 1 0 1 0 0 1 1 1 0 0 0 0 0 0 0 0]
+ [0 0 0 1 0 0 0 0 0 0 1 0 1 1 1 1 1 1 0 1 0 1 0 1 0 0 1 1 0 1 0 0 0|0 0 0 0 0 1 0 1 0 1 0 1 1 1 1 0 0 0 1 0 0 1 0 0 0 1 0 0 1 1 0 0 0]
+ [0 0 0 0 0 0 0 1 0 1 0 1 1 1 1 0 0 0 1 0 0 1 0 0 0 0 0 1 0 0 0 0 0|0 0 0 1 0 0 0 1 0 1 1 1 0 0 0 1 1 1 1 1 0 0 0 1 0 1 1 1 0 1 0 0 0]
+ [0 0 0 0 1 0 0 0 0 0 1 0 0 0 1 1 0 0 0 1 1 0 0 1 0 1 0 1 0 1 0 0 0|0 0 0 0 0 1 1 0 0 0 0 0 1 1 0 1 0 0 1 0 0 1 1 1 0 1 0 1 0 1 0 0 0]
+ [0 0 0 0 0 0 1 0 0 0 0 0 1 1 0 1 0 0 1 0 0 1 1 1 0 0 0 0 1 0 0 0 0|0 0 0 0 1 0 1 0 0 0 1 0 1 1 1 0 0 0 1 1 1 1 1 0 0 0 0 0 1 1 0 0 0]
+ [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0|0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0|0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0|0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1|0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+
+last modified: 2005-06-29
+ 
+
+ Notes 
+ 
+ All codes establishing the lower bounds where constructed using MAGMA .
+ Most upper bounds on qubit codes for n&le;100 are based on a MAGMA program by Eric Rains .
+ For n>100 , the upper bounds on qubit codes are weak (and not necessarily monotone in k ). 
+ Some additional information can be found in the book by Nebe, Rains, and Sloane.
+ My apologies to all authors that have contributed codes to this table for not giving specific credits.
+ 
+
+ 
+ 
+ 
+This page is maintained by 
+ Markus Grassl 
+ ( codes@codetables.de ).
+ 
+Last change: 10.06.2024 
+ 
+ 
+ 
+
+
+ 
+ 

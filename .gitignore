@@ -4,3 +4,9 @@ __pycache__/
 runs/
 !runs/README.md
 bench/problems/classical.jsonl
+codes/src/qtsearch
+codes/src/qtclimb
+codes/src/qtx
+codes/src/qtX
+codes/src/arcsearch
+fmm/data/index.html
